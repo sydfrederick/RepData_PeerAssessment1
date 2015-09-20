@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Simple Data Analysis of Personal Movement Monitoring Device
 ============================================================================================
 
@@ -175,3 +176,4 @@ Very interesting plots. While during the weekday, it seems that activity seems t
 ## Conclusion
 
 This again was just a simple data analysis project for the course "Reproducible Research" provided by Johns Hopkins University through Coursera. We learned some interesting things, however, there is still much that can be learned with more data.
+
