@@ -37,13 +37,13 @@ For this next part, we will make a histogram to see the total number of steps ta
 ```{r}
 completes <- complete.cases(df)
 temp_df <- df[completes,]
-qplot(steps, data = temp_df, fill = day)
+qplot(steps, data = temp_df, fill = day) + labs(title = "Number of Steps Taken Each Day")
 ```
 
 As we can see, there is an excessive amount of observations with zero steps. Let's look at the data a little closer, maybe at count = 1000 for the max:
 
 ```{r}
-qplot(steps, data = temp_df, fill = day) + coord_cartesian(ylim = c(0, 1000))
+qplot(steps, data = temp_df, fill = day) + coord_cartesian(ylim = c(0, 1000)) + labs(title = "Number of Steps Taken Each Day")
 ```
 
 
@@ -58,7 +58,7 @@ Our mean is `r mean`. It's no surprise that the median is `r median` with so man
 
 ### Average Daily Activity Pattern
 
-Now, let's take a look at a time series plot of the 5-minute intervals and the averag number of steps taken averaged across all days:
+Now, let's take a look at a time series plot of the 5-minute intervals and the average number of steps taken averaged across all days:
 
 ```{r}
 # First compute the average steps for each interval
@@ -69,7 +69,7 @@ avgsteps <- as.numeric(avgsteps)
 # And now for the plot
 plot_data <- data.frame(interval, avgsteps)
 g <- ggplot(plot_data, aes(x=interval, y=avgsteps))
-g + geom_line() + labs(x = "Interval") + labs(y = "Average Steps")
+g + geom_line() + labs(x = "Interval") + labs(y = "Average Steps") + labs(title = "Averaged Number of Steps Across Intervals")
 ```
 
 Now it would be interesting to see which 5-minute interval contains the highest number of average steps:
@@ -116,7 +116,7 @@ Now, let's see if our histogram has changed at all with this new data:
 
 ```{r}
 ## Note: we are still using 1000 as our y-axis limit since there are still plenty of observations with zero for the number of steps
-qplot(steps, data = df, fill = day) + coord_cartesian(ylim = c(0, 1000))
+qplot(steps, data = df, fill = day) + coord_cartesian(ylim = c(0, 1000)) + labs(title = "Number of Steps Taken Each Day")
 ```
 
 It does not look like much has changed at all. Maybe our mean and median have changed, let's take a look:
@@ -168,7 +168,7 @@ weekend <- c(rep("weekend", times = 288), rep("weekday", times = 288))
 plot_data <- data.frame(interval, avgsteps, weekend)
 # Now for the plot
 g <- ggplot(plot_data, aes(x=interval, y=avgsteps))
-g + geom_line() + facet_grid(weekend ~ .) + labs(x = "Interval") + labs(y = "Average Steps")
+g + geom_line() + facet_grid(weekend ~ .) + labs(x = "Interval") + labs(y = "Average Steps") + labs(title = "Average Steps by Weekend and Weekday Intervals")
 ```
 
 Very interesting plots. While during the weekday, it seems that activity seems to be higher during the intervals of around 500 to 1000, but on the weekends it seems that activity is higher all around on average.
