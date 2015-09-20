@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Simple Data Analysis of Personal Movement Monitoring Device
 ============================================================================================
 
@@ -46,7 +47,7 @@ For this next part, we will make a histogram to see the total number of steps ta
 ```r
 completes <- complete.cases(df)
 temp_df <- df[completes,]
-qplot(steps, data = temp_df, fill = day)
+qplot(steps, data = temp_df, fill = day) + labs(title = "Number of Steps Taken Each Day")
 ```
 
 ```
@@ -59,7 +60,7 @@ As we can see, there is an excessive amount of observations with zero steps. Let
 
 
 ```r
-qplot(steps, data = temp_df, fill = day) + coord_cartesian(ylim = c(0, 1000))
+qplot(steps, data = temp_df, fill = day) + coord_cartesian(ylim = c(0, 1000)) + labs(title = "Number of Steps Taken Each Day")
 ```
 
 ```
@@ -81,7 +82,7 @@ Our mean is 37.3825996. It's no surprise that the median is 0 with so many obser
 
 ### Average Daily Activity Pattern
 
-Now, let's take a look at a time series plot of the 5-minute intervals and the averag number of steps taken averaged across all days:
+Now, let's take a look at a time series plot of the 5-minute intervals and the average number of steps taken averaged across all days:
 
 
 ```r
@@ -93,7 +94,7 @@ avgsteps <- as.numeric(avgsteps)
 # And now for the plot
 plot_data <- data.frame(interval, avgsteps)
 g <- ggplot(plot_data, aes(x=interval, y=avgsteps))
-g + geom_line() + labs(x = "Interval") + labs(y = "Average Steps")
+g + geom_line() + labs(x = "Interval") + labs(y = "Average Steps") + labs(title = "Averaged Number of Steps Across Intervals")
 ```
 
 ![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
@@ -161,7 +162,7 @@ Now, let's see if our histogram has changed at all with this new data:
 
 ```r
 ## Note: we are still using 1000 as our y-axis limit since there are still plenty of observations with zero for the number of steps
-qplot(steps, data = df, fill = day) + coord_cartesian(ylim = c(0, 1000))
+qplot(steps, data = df, fill = day) + coord_cartesian(ylim = c(0, 1000)) + labs(title = "Number of Steps Taken Each Day")
 ```
 
 ```
@@ -222,7 +223,7 @@ weekend <- c(rep("weekend", times = 288), rep("weekday", times = 288))
 plot_data <- data.frame(interval, avgsteps, weekend)
 # Now for the plot
 g <- ggplot(plot_data, aes(x=interval, y=avgsteps))
-g + geom_line() + facet_grid(weekend ~ .) + labs(x = "Interval") + labs(y = "Average Steps")
+g + geom_line() + facet_grid(weekend ~ .) + labs(x = "Interval") + labs(y = "Average Steps") + labs(title = "Average Steps by Weekend and Weekday Intervals")
 ```
 
 ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
@@ -232,3 +233,4 @@ Very interesting plots. While during the weekday, it seems that activity seems t
 ## Conclusion
 
 This again was just a simple data analysis project for the course "Reproducible Research" provided by Johns Hopkins University through Coursera. We learned some interesting things, however, there is still much that can be learned with more data.
+
